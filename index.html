@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DarkAG | مكتب الأمن السيبراني — مكافحة الابتزاز واستعادة الحسابات</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="canonical" href="https://darkag.org/">
+<meta name="description" content="مكتب DarkAG للأمن السيبراني — متخصصون في مكافحة الابتزاز الإلكتروني، استعادة الحسابات المخترقة، التحقيق الرقمي. معتمدون من أكاديمية 8200. متاحون 24/7.">
+<meta name="keywords" content="ابتزاز الكتروني, استعادة حساب انستقرام, اختراق واتساب, سايبر سكيوريتي, DarkAG, cybersecurity, blackmail, account recovery">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="DarkAG | Cybersecurity Office">
+<meta property="og:description" content="Anti-blackmail, account recovery and digital forensics. 8200 Academy certified. Available 24/7.">
+<meta property="og:url" content="https://darkag.org">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DarkAG | Cybersecurity Office">
+<link rel="alternate" hreflang="ar" href="https://darkag.org/">
+<link rel="alternate" hreflang="he" href="https://darkag.org/?lang=he">
+<link rel="alternate" hreflang="en" href="https://darkag.org/?lang=en">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"DarkAG Cybersecurity Office","url":"https://darkag.org","telephone":"+972586682260","email":"darkag@darkag.computer","openingHours":"Mo-Su 00:00-24:00"}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Cairo:wght@300;400;600;700;900&family=Heebo:wght@300;400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --neon: #00ff88;
+    --neon2: #00cc66;
+    --neon-dim: rgba(0,255,136,0.12);
+    --neon-glow: 0 0 18px rgba(0,255,136,0.45);
+    --bg: #030a06;
+    --bg2: #060f09;
+    --bg3: #0a160d;
+    --surface: #0d1f12;
+    --surface2: #112819;
+    --border: rgba(0,255,136,0.18);
+    --border2: rgba(0,255,136,0.35);
+    --text: #e8f5ec;
+    --text2: #8fb89a;
+    --text3: #4a7a58;
+    --red: #ff3d3d;
+    --amber: #ffb700;
+    --mono: 'IBM Plex Mono', 'Space Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Cairo', 'Heebo', sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  body[dir="rtl"] { font-family: 'Cairo', sans-serif; }
+  body[dir="ltr"]:lang(he) { font-family: 'Heebo', sans-serif; }
+  body[dir="ltr"]:not([lang="he"]) { font-family: 'Space Mono', monospace; }
+
+  /* === SCANLINE OVERLAY === */
+  body::before {
+    content: '';
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
+    pointer-events: none; z-index: 9999;
+  }
+
+  /* === GRID BG === */
+  .grid-bg {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-image:
+      linear-gradient(rgba(0,255,136,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,255,136,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none; z-index: 0;
+  }
+
+  /* === NAV === */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(3,10,6,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+    height: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  .logo {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none;
+  }
+  .logo-icon {
+    width: 36px; height: 36px;
+    border: 1.5px solid var(--neon);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono);
+    font-size: 13px; font-weight: 700;
+    color: var(--neon);
+    box-shadow: var(--neon-glow), inset 0 0 8px rgba(0,255,136,0.1);
+  }
+  .logo-text {
+    font-family: var(--mono);
+    font-size: 18px; font-weight: 700;
+    color: var(--neon);
+    letter-spacing: 2px;
+  }
+  .logo-sub {
+    font-size: 9px;
+    color: var(--text3);
+    font-family: var(--mono);
+    letter-spacing: 1px;
+  }
+
+  .nav-links {
+    display: flex; align-items: center; gap: 6px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--text2);
+    text-decoration: none;
+    font-size: 13px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: all 0.2s;
+    font-family: var(--mono);
+    letter-spacing: 0.5px;
+  }
+  .nav-links a:hover { color: var(--neon); background: var(--neon-dim); }
+
+  .lang-switcher {
+    display: flex; gap: 4px;
+  }
+  .lang-btn {
+    padding: 5px 10px;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text3);
+    font-family: var(--mono);
+    font-size: 11px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 1px;
+  }
+  .lang-btn:hover, .lang-btn.active {
+    border-color: var(--neon);
+    color: var(--neon);
+    background: var(--neon-dim);
+  }
+
+  .nav-cta {
+    background: var(--neon);
+    color: var(--bg) !important;
+    font-weight: 700 !important;
+    border-radius: 4px;
+    padding: 8px 16px !important;
+    font-family: var(--mono) !important;
+    transition: all 0.2s !important;
+    box-shadow: var(--neon-glow);
+  }
+  .nav-cta:hover { background: var(--neon2) !important; transform: translateY(-1px); }
+
+  /* === SECTIONS === */
+  section { position: relative; z-index: 1; }
+
+  /* === HERO === */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 80px 24px 40px;
+    text-align: center;
+    position: relative;
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--neon);
+    margin-bottom: 32px;
+    letter-spacing: 1px;
+  }
+  .hero-badge .dot {
+    width: 6px; height: 6px;
+    background: var(--neon);
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+  }
+
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+
+  .hero h1 {
+    font-size: clamp(42px, 8vw, 90px);
+    font-weight: 900;
+    line-height: 1.05;
+    margin-bottom: 8px;
+    letter-spacing: -1px;
+  }
+  .hero h1 .brand {
+    color: var(--neon);
+    text-shadow: var(--neon-glow);
+    font-family: var(--mono);
+    display: block;
+    font-size: clamp(50px, 10vw, 110px);
+  }
+  .hero h1 .tagline { color: var(--text); font-size: clamp(24px, 5vw, 52px); }
+
+  .hero-sub {
+    font-size: clamp(14px, 2vw, 18px);
+    color: var(--text2);
+    max-width: 640px;
+    margin: 24px auto 40px;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  .hero-actions {
+    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--neon);
+    color: var(--bg);
+    border: none;
+    padding: 14px 32px;
+    font-family: var(--mono);
+    font-size: 14px; font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: var(--neon-glow);
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    letter-spacing: 0.5px;
+  }
+  .btn-primary:hover { background: var(--neon2); transform: translateY(-2px); box-shadow: 0 0 30px rgba(0,255,136,0.6); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--neon);
+    border: 1px solid var(--border2);
+    padding: 14px 32px;
+    font-family: var(--mono);
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    letter-spacing: 0.5px;
+  }
+  .btn-secondary:hover { background: var(--neon-dim); border-color: var(--neon); }
+
+  /* terminal hero animation */
+  .terminal-line {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text3);
+    margin-top: 48px;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .terminal-line .cursor {
+    display: inline-block;
+    width: 8px; height: 14px;
+    background: var(--neon);
+    animation: blink 1s infinite;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  /* === STATS BAR === */
+  .stats-bar {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+    padding: 28px 40px;
+    display: flex; justify-content: center; gap: 0;
+    flex-wrap: wrap;
+  }
+  .stat-item {
+    text-align: center;
+    padding: 12px 40px;
+    border-right: 1px solid var(--border);
+    flex: 1; min-width: 140px;
+  }
+  .stat-item:last-child { border-right: none; }
+  [dir="rtl"] .stat-item { border-right: none; border-left: 1px solid var(--border); }
+  [dir="rtl"] .stat-item:last-child { border-left: none; }
+
+  .stat-num {
+    font-family: var(--mono);
+    font-size: 32px; font-weight: 700;
+    color: var(--neon);
+    text-shadow: var(--neon-glow);
+    display: block;
+  }
+  .stat-label { font-size: 12px; color: var(--text3); margin-top: 4px; letter-spacing: 1px; }
+
+  /* === SERVICES === */
+  .section-header {
+    text-align: center;
+    padding: 80px 24px 48px;
+  }
+  .section-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--neon);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .section-title {
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+  }
+  .section-title span { color: var(--neon); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    margin: 0;
+    padding: 0;
+  }
+
+  .service-card {
+    background: var(--bg2);
+    padding: 36px 28px;
+    transition: all 0.3s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--neon);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+  }
+  .service-card:hover { background: var(--surface); }
+  .service-card:hover::before { transform: scaleX(1); }
+
+  .service-icon {
+    width: 52px; height: 52px;
+    border: 1px solid var(--border2);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+    font-size: 22px;
+    background: var(--neon-dim);
+    transition: all 0.3s;
+  }
+  .service-card:hover .service-icon {
+    border-color: var(--neon);
+    box-shadow: var(--neon-glow);
+  }
+
+  .service-title {
+    font-size: 18px; font-weight: 700;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+  .service-desc {
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+  .service-tag {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 4px 12px;
+    background: var(--neon-dim);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--neon);
+    letter-spacing: 1px;
+  }
+
+  /* === PLATFORMS === */
+  .platforms-section {
+    padding: 60px 40px;
+    text-align: center;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .platforms-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text3);
+    letter-spacing: 3px;
+    margin-bottom: 32px;
+  }
+  .platforms-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .platform-pill {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 8px 18px;
+    font-size: 13px;
+    color: var(--text2);
+    transition: all 0.2s;
+    display: flex; align-items: center; gap: 6px;
+    font-family: var(--mono);
+  }
+  .platform-pill:hover {
+    border-color: var(--neon);
+    color: var(--neon);
+    background: var(--neon-dim);
+    transform: translateY(-2px);
+  }
+  .platform-pill .pip { width: 6px; height: 6px; background: var(--neon2); border-radius: 50%; }
+
+  /* === ABOUT === */
+  .about-section {
+    padding: 80px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  @media (max-width: 768px) {
+    .about-section { grid-template-columns: 1fr; padding: 60px 24px; gap: 40px; }
+    .nav-links { display: none; }
+    .stats-bar { flex-direction: column; }
+    .stat-item { border: none; border-bottom: 1px solid var(--border); }
+  }
+
+  .about-terminal {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .terminal-header {
+    background: var(--surface);
+    padding: 12px 16px;
+    display: flex; align-items: center; gap: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .t-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .t-red { background: #ff5f57; } .t-amber { background: #febc2e; } .t-green { background: #28c840; }
+  .terminal-title { font-family: var(--mono); font-size: 11px; color: var(--text3); margin-right: auto; margin-left: 0; }
+  [dir="rtl"] .terminal-title { margin-right: 0; margin-left: auto; }
+  .terminal-body {
+    padding: 20px;
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 2;
+  }
+  .t-prompt { color: var(--neon); }
+  .t-cmd { color: var(--text2); }
+  .t-out { color: var(--text3); padding-right: 16px; }
+  [dir="rtl"] .t-out { padding-right: 0; padding-left: 16px; }
+  .t-hi { color: var(--neon); font-weight: 600; }
+  .t-warn { color: var(--amber); }
+
+  .about-content h2 {
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.3;
+    margin-bottom: 20px;
+  }
+  .about-content h2 span { color: var(--neon); }
+  .about-content p {
+    color: var(--text2);
+    font-size: 15px;
+    line-height: 1.9;
+    margin-bottom: 16px;
+    font-weight: 300;
+  }
+  .cred-pills {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px;
+  }
+  .cred-pill {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 6px 14px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--neon);
+    letter-spacing: 0.5px;
+  }
+
+  /* === EMERGENCY BANNER === */
+  .emergency-section {
+    background: linear-gradient(135deg, rgba(255,61,61,0.08), rgba(255,183,0,0.05));
+    border-top: 1px solid rgba(255,61,61,0.2);
+    border-bottom: 1px solid rgba(255,61,61,0.2);
+    padding: 48px 40px;
+    text-align: center;
+  }
+  .emergency-title {
+    font-family: var(--mono);
+    font-size: clamp(18px, 3vw, 28px);
+    color: var(--red);
+    margin-bottom: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .emergency-sub { color: var(--text2); font-size: 14px; margin-bottom: 28px; }
+  .emergency-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn-red {
+    background: var(--red);
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    font-family: var(--mono);
+    font-size: 14px; font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 0 20px rgba(255,61,61,0.3);
+  }
+  .btn-red:hover { transform: translateY(-2px); box-shadow: 0 0 30px rgba(255,61,61,0.5); }
+
+  /* === AI CHAT === */
+  .chat-section {
+    padding: 80px 24px;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+  .chat-container {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 40px rgba(0,255,136,0.05);
+  }
+  .chat-header {
+    background: var(--surface);
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 12px;
+  }
+  .chat-avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--neon-dim);
+    border: 1.5px solid var(--neon);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--neon);
+    box-shadow: var(--neon-glow);
+  }
+  .chat-info .name { font-size: 14px; font-weight: 600; color: var(--text); }
+  .chat-info .status { font-family: var(--mono); font-size: 11px; color: var(--neon); }
+  .chat-status-dot { width: 7px; height: 7px; background: var(--neon); border-radius: 50%; animation: pulse 1.5s infinite; margin-left: auto; }
+  [dir="rtl"] .chat-status-dot { margin-left: 0; margin-right: auto; }
+
+  .chat-messages {
+    height: 380px;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex; flex-direction: column; gap: 16px;
+    scroll-behavior: smooth;
+  }
+  .chat-messages::-webkit-scrollbar { width: 4px; }
+  .chat-messages::-webkit-scrollbar-track { background: transparent; }
+  .chat-messages::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+
+  .msg { display: flex; gap: 10px; max-width: 82%; }
+  .msg.bot { align-self: flex-start; }
+  .msg.user { align-self: flex-end; flex-direction: row-reverse; }
+  .msg-av {
+    width: 30px; height: 30px; flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--neon-dim);
+    border: 1px solid var(--neon);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono); font-size: 10px; color: var(--neon);
+  }
+  .msg.user .msg-av { background: rgba(0,204,102,0.1); border-color: var(--neon2); color: var(--neon2); }
+  .msg-bubble {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px 12px 12px 2px;
+    padding: 12px 16px;
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.7;
+  }
+  .msg.user .msg-bubble {
+    background: var(--neon-dim);
+    border-color: var(--border2);
+    border-radius: 12px 12px 2px 12px;
+    color: var(--neon);
+  }
+  .msg-time { font-family: var(--mono); font-size: 10px; color: var(--text3); margin-top: 4px; }
+
+  .typing-indicator {
+    display: flex; gap: 4px; align-items: center; padding: 4px 0;
+  }
+  .typing-dot {
+    width: 6px; height: 6px;
+    background: var(--neon);
+    border-radius: 50%;
+    animation: typing 1.2s infinite;
+  }
+  .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+  .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes typing { 0%,60%,100%{opacity:0.3;transform:translateY(0)} 30%{opacity:1;transform:translateY(-4px)} }
+
+  .chat-quick {
+    padding: 12px 20px;
+    border-top: 1px solid var(--border);
+    display: flex; gap: 8px; flex-wrap: wrap;
+  }
+  .quick-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 6px 14px;
+    font-size: 12px;
+    color: var(--text2);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Cairo', sans-serif;
+    white-space: nowrap;
+  }
+  .quick-btn:hover { border-color: var(--neon); color: var(--neon); background: var(--neon-dim); }
+
+  .chat-input-area {
+    padding: 16px 20px;
+    border-top: 1px solid var(--border);
+    display: flex; gap: 10px; align-items: flex-end;
+  }
+  .chat-input {
+    flex: 1;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 16px;
+    color: var(--text);
+    font-size: 14px;
+    font-family: 'Cairo', sans-serif;
+    resize: none;
+    min-height: 44px; max-height: 120px;
+    line-height: 1.5;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .chat-input:focus { border-color: var(--neon); }
+  .chat-input::placeholder { color: var(--text3); }
+  .send-btn {
+    width: 44px; height: 44px; flex-shrink: 0;
+    background: var(--neon);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+    box-shadow: var(--neon-glow);
+  }
+  .send-btn:hover { background: var(--neon2); transform: scale(1.05); }
+  .send-btn svg { width: 18px; height: 18px; fill: var(--bg); }
+
+  /* === CONTACT === */
+  .contact-section {
+    padding: 80px 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+  @media (max-width: 768px) { .contact-section { grid-template-columns: 1fr; gap: 40px; padding: 60px 24px; } }
+
+  .contact-info h2 { font-size: 32px; font-weight: 700; color: var(--text); margin-bottom: 16px; }
+  .contact-info h2 span { color: var(--neon); }
+  .contact-info p { color: var(--text2); font-size: 14px; line-height: 1.8; margin-bottom: 28px; font-weight: 300; }
+  .contact-links { display: flex; flex-direction: column; gap: 12px; }
+  .contact-link {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 18px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text2);
+    transition: all 0.2s;
+    font-family: var(--mono); font-size: 13px;
+  }
+  .contact-link:hover { border-color: var(--neon); color: var(--neon); background: var(--neon-dim); }
+  .contact-link .icon { font-size: 16px; }
+
+  .contact-form { display: flex; flex-direction: column; gap: 14px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-label { font-family: var(--mono); font-size: 11px; color: var(--text3); letter-spacing: 1px; }
+  .form-input, .form-select, .form-textarea {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 14px;
+    color: var(--text);
+    font-size: 14px;
+    font-family: 'Cairo', sans-serif;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+  .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--neon); }
+  .form-textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
+  .form-select option { background: var(--bg2); }
+
+  /* === FOOTER === */
+  footer {
+    border-top: 1px solid var(--border);
+    background: var(--bg2);
+    padding: 40px;
+    text-align: center;
+  }
+  .footer-logo { font-family: var(--mono); font-size: 22px; color: var(--neon); font-weight: 700; letter-spacing: 3px; margin-bottom: 8px; }
+  .footer-tagline { font-size: 12px; color: var(--text3); margin-bottom: 24px; font-family: var(--mono); }
+  .footer-links { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px; }
+  .footer-links a { color: var(--text3); font-size: 12px; text-decoration: none; font-family: var(--mono); transition: color 0.2s; }
+  .footer-links a:hover { color: var(--neon); }
+  .footer-copy { font-family: var(--mono); font-size: 11px; color: var(--text3); }
+
+  /* FLOATING EMERGENCY */
+  .float-emergency {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    z-index: 999;
+    background: var(--red);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 20px;
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 0 24px rgba(255,61,61,0.5);
+    animation: pulse-red 2s infinite;
+    text-decoration: none;
+    display: flex; align-items: center; gap: 8px;
+    letter-spacing: 0.5px;
+  }
+  [dir="ltr"] .float-emergency { left: auto; right: 24px; }
+  @keyframes pulse-red { 0%,100%{box-shadow:0 0 24px rgba(255,61,61,0.5)} 50%{box-shadow:0 0 40px rgba(255,61,61,0.8)} }
+</style>
+</head>
+<body dir="rtl" lang="ar">
+<div class="grid-bg"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">
+    <div class="logo-icon">AG</div>
+    <div>
+      <div class="logo-text">DarkAG</div>
+      <div class="logo-sub">CYBER SECURITY</div>
+    </div>
+  </a>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#services" data-i18n="nav_services">الخدمات</a></li>
+    <li><a href="#about" data-i18n="nav_about">من نحن</a></li>
+    <li><a href="#chat" data-i18n="nav_chat">AI Chat</a></li>
+    <li><a href="#contact" data-i18n="nav_contact">تواصل</a></li>
+    <li><a href="tel:+972586682260" class="nav-cta" data-i18n="nav_emergency">🚨 طوارئ</a></li>
+  </ul>
+
+  <div class="lang-switcher">
+    <button class="lang-btn active" onclick="setLang('ar')">عر</button>
+    <button class="lang-btn" onclick="setLang('he')">עב</button>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div>
+    <div class="hero-badge">
+      <span class="dot"></span>
+      <span data-i18n="hero_badge">متاحون 24/7 — استجابة فورية</span>
+    </div>
+    <h1>
+      <span class="brand">DarkAG</span>
+      <span class="tagline" data-i18n="hero_tagline">نحميك في الظلام</span>
+    </h1>
+    <p class="hero-sub" data-i18n="hero_sub">
+      مكتب متخصص في مكافحة الابتزاز الإلكتروني، استعادة الحسابات، التحقيق الرقمي، والاستشارات الأمنية. خبرة معتمدة من أكاديمية 8200، دكتوراه فخرية في الأمن السيبراني.
+    </p>
+    <div class="hero-actions">
+      <a href="#chat" class="btn-primary" data-i18n="hero_cta1">💬 ابدأ الآن</a>
+      <a href="#services" class="btn-secondary" data-i18n="hero_cta2">← استعرض الخدمات</a>
+    </div>
+    <div class="terminal-line">
+      <span style="color:var(--neon)">darkag@cyber</span>
+      <span style="color:var(--text3)">:~$</span>
+      <span id="termText" style="color:var(--text2)"></span>
+      <span class="cursor"></span>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <span class="stat-num">500+</span>
+    <span class="stat-label" data-i18n="stat1">حالة محلولة</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">24/7</span>
+    <span class="stat-label" data-i18n="stat2">استجابة طوارئ</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">8200</span>
+    <span class="stat-label" data-i18n="stat3">أكاديمي معتمد</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">3</span>
+    <span class="stat-label" data-i18n="stat4">لغات خدمة</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-header">
+    <span class="section-tag" data-i18n="services_tag">// خدماتنا</span>
+    <h2 class="section-title" data-i18n="services_title">حلول <span>سيبرانية</span> متكاملة</h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🛡️</div>
+      <h3 class="service-title" data-i18n="s1_title">مكافحة الابتزاز الإلكتروني</h3>
+      <p class="service-desc" data-i18n="s1_desc">استجابة فورية لحالات الابتزاز والتشهير الرقمي. تتبع المبتز، جمع الأدلة، التعامل القانوني، وإيقاف التهديد نهائياً.</p>
+      <span class="service-tag">ANTI-BLACKMAIL</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔑</div>
+      <h3 class="service-title" data-i18n="s2_title">استعادة الحسابات المخترقة</h3>
+      <p class="service-desc" data-i18n="s2_desc">استرجاع الوصول لجميع منصات التواصل الاجتماعي، البريد الإلكتروني، حسابات الألعاب والتطبيقات المختلفة.</p>
+      <span class="service-tag">ACCOUNT RECOVERY</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔍</div>
+      <h3 class="service-title" data-i18n="s3_title">التحقيق الرقمي</h3>
+      <p class="service-desc" data-i18n="s3_desc">تحديد هوية المهاجمين، تتبع المصادر الرقمية، وجمع الأدلة الجنائية الرقمية المعتمدة قانونياً.</p>
+      <span class="service-tag">DIGITAL FORENSICS</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔒</div>
+      <h3 class="service-title" data-i18n="s4_title">تأمين الخصوصية</h3>
+      <p class="service-desc" data-i18n="s4_desc">إزالة المحتوى الضار من الإنترنت، حماية المعلومات الشخصية، وتعزيز أمنك الرقمي الشامل.</p>
+      <span class="service-tag">PRIVACY SHIELD</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">⚡</div>
+      <h3 class="service-title" data-i18n="s5_title">استشارات الأمن السيبراني</h3>
+      <p class="service-desc" data-i18n="s5_desc">تقييم البنية الأمنية، خطط الحماية المخصصة للأفراد والشركات، وتدريب الفرق على الوعي الأمني.</p>
+      <span class="service-tag">CONSULTING</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🚨</div>
+      <h3 class="service-title" data-i18n="s6_title">استجابة الطوارئ</h3>
+      <p class="service-desc" data-i18n="s6_desc">فريق متاح على مدار الساعة للحالات الحرجة. استجابة فورية خلال دقائق من الاتصال الأول.</p>
+      <span class="service-tag">24/7 EMERGENCY</span>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORMS -->
+<div class="platforms-section">
+  <p class="platforms-label" data-i18n="platforms_label">// PLATFORMS WE COVER</p>
+  <div class="platforms-grid">
+    <div class="platform-pill"><span class="pip"></span>Instagram</div>
+    <div class="platform-pill"><span class="pip"></span>Facebook</div>
+    <div class="platform-pill"><span class="pip"></span>WhatsApp</div>
+    <div class="platform-pill"><span class="pip"></span>TikTok</div>
+    <div class="platform-pill"><span class="pip"></span>Snapchat</div>
+    <div class="platform-pill"><span class="pip"></span>YouTube</div>
+    <div class="platform-pill"><span class="pip"></span>Telegram</div>
+    <div class="platform-pill"><span class="pip"></span>Twitter / X</div>
+    <div class="platform-pill"><span class="pip"></span>PUBG / BGMI</div>
+    <div class="platform-pill"><span class="pip"></span>Gmail / Outlook</div>
+    <div class="platform-pill"><span class="pip"></span>LinkedIn</div>
+    <div class="platform-pill"><span class="pip"></span>Discord</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-section">
+    <div class="about-terminal">
+      <div class="terminal-header">
+        <div class="t-dot t-red"></div>
+        <div class="t-dot t-amber"></div>
+        <div class="t-dot t-green"></div>
+        <span class="terminal-title">darkag_profile.sh</span>
+      </div>
+      <div class="terminal-body">
+        <div><span class="t-prompt">$ </span><span class="t-cmd">cat founder.json</span></div>
+        <div class="t-out">{</div>
+        <div class="t-out">&nbsp;&nbsp;"name": <span class="t-hi">"Ahmad"</span>,</div>
+        <div class="t-out">&nbsp;&nbsp;"office": <span class="t-hi">"DarkAG"</span>,</div>
+        <div class="t-out">&nbsp;&nbsp;"credentials": [</div>
+        <div class="t-out">&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-hi">"8200 Academy"</span>,</div>
+        <div class="t-out">&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-hi">"PhD Cybersecurity (Hon.)"</span>,</div>
+        <div class="t-out">&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-hi">"DevOps Specialist"</span></div>
+        <div class="t-out">&nbsp;&nbsp;],</div>
+        <div class="t-out">&nbsp;&nbsp;"specializations": [</div>
+        <div class="t-out">&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-warn">"Anti-Blackmail"</span>,</div>
+        <div class="t-out">&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-warn">"Account Recovery"</span>,</div>
+        <div class="t-out">&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-warn">"Identity Investigation"</span></div>
+        <div class="t-out">&nbsp;&nbsp;],</div>
+        <div class="t-out">&nbsp;&nbsp;"partner": <span class="t-hi">"StopNCII (Pending)"</span>,</div>
+        <div class="t-out">&nbsp;&nbsp;"availability": <span class="t-hi">"24/7"</span></div>
+        <div class="t-out">}</div>
+        <br>
+        <div><span class="t-prompt">$ </span><span class="t-cmd">./status --live</span></div>
+        <div class="t-out">[<span class="t-hi">ONLINE</span>] All systems operational</div>
+        <div class="t-out">[<span class="t-hi">READY</span>] Emergency response team active</div>
+      </div>
+    </div>
+    <div class="about-content">
+      <h2 data-i18n="about_title">خبرة <span>حقيقية</span> في ميدان القتال الرقمي</h2>
+      <p data-i18n="about_p1">مكتب DarkAG مبني على خبرة ميدانية حقيقية في أعمق تخصصات الأمن السيبراني. نؤمن أن كل ضحية تستحق استجابة سريعة، فعّالة، وسرية تامة.</p>
+      <p data-i18n="about_p2">بخلفية من أكاديمية 8200 ودكتوراه فخرية في الأمن السيبراني، نجمع بين المعرفة التقنية العميقة والفهم الإنساني لحساسية حالات الابتزاز والانتهاك الرقمي.</p>
+      <div class="cred-pills">
+        <span class="cred-pill">8200 ACADEMY</span>
+        <span class="cred-pill">PhD CYBERSECURITY</span>
+        <span class="cred-pill">DEVOPS</span>
+        <span class="cred-pill">StopNCII PARTNER</span>
+        <span class="cred-pill">IL CERTIFIED</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EMERGENCY -->
+<div class="emergency-section">
+  <p class="emergency-title" data-i18n="emergency_title">🚨 حالة طوارئ؟ اتصل الآن</p>
+  <p class="emergency-sub" data-i18n="emergency_sub">نرد فوراً على الحالات الحرجة — ابتزاز، اختراق، تهديد</p>
+  <div class="emergency-actions">
+    <a href="tel:+972586682260" class="btn-red">📞 +972 58 668 2260</a>
+    <a href="/cdn-cgi/l/email-protection#e18580938a8086a18580938a8086cf828e8c9194958493" class="btn-secondary">✉ <span class="__cf_email__" data-cfemail="fd999c8f969c9abd999c8f969c9ad39e92908d8889988f">[email&#160;protected]</span></a>
+  </div>
+</div>
+
+<!-- AI CHAT -->
+<section id="chat">
+  <div class="section-header">
+    <span class="section-tag">// AI ASSISTANT</span>
+    <h2 class="section-title" data-i18n="chat_title">مساعد <span>ذكاء اصطناعي</span> فوري</h2>
+  </div>
+  <div class="chat-section">
+    <div class="chat-container">
+      <div class="chat-header">
+        <div class="chat-avatar">AG</div>
+        <div class="chat-info">
+          <div class="name">DarkAG Bot</div>
+          <div class="status" data-i18n="chat_status">● متصل — يرد فوراً</div>
+        </div>
+        <div class="chat-status-dot"></div>
+      </div>
+
+      <div class="chat-messages" id="chatMessages">
+        <div class="msg bot">
+          <div class="msg-av">AG</div>
+          <div>
+            <div class="msg-bubble" id="welcomeMsg">مرحباً! أنا مساعد DarkAG الذكي. كيف يمكنني مساعدتك اليوم؟ يمكنك سؤالي عن الابتزاز، الاختراق، استعادة الحسابات، أو أي مشكلة أمنية.</div>
+            <div class="msg-time">الآن</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chat-quick" id="quickBtns">
+        <button class="quick-btn" onclick="quickSend(this)" data-i18n="q1">تعرضت للابتزاز</button>
+        <button class="quick-btn" onclick="quickSend(this)" data-i18n="q2">حسابي مخترق</button>
+        <button class="quick-btn" onclick="quickSend(this)" data-i18n="q3">تسريب صور خاصة</button>
+        <button class="quick-btn" onclick="quickSend(this)" data-i18n="q4">فقدت الوصول لحسابي</button>
+      </div>
+
+      <div class="chat-input-area">
+        <textarea class="chat-input" id="chatInput" rows="1" placeholder="اكتب رسالتك هنا..." data-i18n-placeholder="chat_placeholder" onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+        <button class="send-btn" onclick="sendMessage()">
+          <svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2L15 22 11 13 2 9l20-7z"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header">
+    <span class="section-tag" data-i18n="contact_tag">// تواصل معنا</span>
+    <h2 class="section-title" data-i18n="contact_title">ابدأ <span>الآن</span></h2>
+  </div>
+  <div class="contact-section">
+    <div class="contact-info">
+      <h2><span data-i18n="contact_h2">هنا لمساعدتك</span></h2>
+      <p data-i18n="contact_p">لا تتردد في التواصل معنا مهما كانت حالتك. كل المعلومات تبقى سرية تماماً. نحن هنا لنساعدك.</p>
+      <div class="contact-links">
+        <a href="tel:+972586682260" class="contact-link">
+          <span class="icon">📞</span>
+          <span>+972 58 668 2260</span>
+        </a>
+        <a href="/cdn-cgi/l/email-protection#cda9acbfa6acaa8da9acbfa6acaae3aea2a0bdb8b9a8bf" class="contact-link">
+          <span class="icon">✉</span>
+          <span><span class="__cf_email__" data-cfemail="badedbc8d1dbddfadedbc8d1dbdd94d9d5d7cacfcedfc8">[email&#160;protected]</span></span>
+        </a>
+        <a href="https://darkag.org" class="contact-link" target="_blank">
+          <span class="icon">🌐</span>
+          <span>darkag.org</span>
+        </a>
+      </div>
+    </div>
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <div class="form-group">
+        <label class="form-label" data-i18n="form_name">// الاسم</label>
+        <input class="form-input" type="text" data-i18n-placeholder="form_name_ph" placeholder="اسمك (سري)" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-i18n="form_contact">// طريقة التواصل</label>
+        <input class="form-input" type="text" data-i18n-placeholder="form_contact_ph" placeholder="واتساب / إيميل / هاتف">
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-i18n="form_type">// نوع الحالة</label>
+        <select class="form-select">
+          <option data-i18n="opt1">ابتزاز إلكتروني</option>
+          <option data-i18n="opt2">اختراق حساب</option>
+          <option data-i18n="opt3">تسريب معلومات</option>
+          <option data-i18n="opt4">استعادة حساب</option>
+          <option data-i18n="opt5">استشارة أمنية</option>
+          <option data-i18n="opt6">أخرى</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-i18n="form_msg">// تفاصيل الحالة</label>
+        <textarea class="form-textarea" data-i18n-placeholder="form_msg_ph" placeholder="اشرح وضعك بشكل مختصر..."></textarea>
+      </div>
+      <button type="submit" class="btn-primary" style="width:100%;justify-content:center;" data-i18n="form_submit">إرسال الطلب ←</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">DARK<span style="color:var(--neon2)">AG</span></div>
+  <div class="footer-tagline" data-i18n="footer_tag">نحميك في الظلام // We Guard in the Dark // אנחנו שומרים בחשכה</div>
+  <div class="footer-links">
+    <a href="#services" data-i18n="nav_services">الخدمات</a>
+    <a href="#about" data-i18n="nav_about">من نحن</a>
+    <a href="#chat" data-i18n="nav_chat">AI Chat</a>
+    <a href="#contact" data-i18n="nav_contact">تواصل</a>
+    <a href="/cdn-cgi/l/email-protection#8ce8edfee7edebcce8edfee7edeba2efe3e1fcf9f8e9fe"><span class="__cf_email__" data-cfemail="214540534a4046614540534a40460f424e4c5154554453">[email&#160;protected]</span></a>
+  </div>
+  <div class="footer-copy">© 2025 DarkAG | darkag.org | +972 58 668 2260</div>
+</footer>
+
+<!-- FLOATING EMERGENCY -->
+<a href="tel:+972586682260" class="float-emergency" id="floatBtn">
+  🚨 <span data-i18n="float_emergency">طوارئ</span>
+</a>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ========== I18N ==========
+const i18n = {
+  ar: {
+    nav_services: 'الخدمات', nav_about: 'من نحن', nav_chat: 'AI Chat', nav_contact: 'تواصل', nav_emergency: '🚨 طوارئ',
+    hero_badge: 'متاحون 24/7 — استجابة فورية',
+    hero_tagline: 'نحميك في الظلام',
+    hero_sub: 'مكتب متخصص في مكافحة الابتزاز الإلكتروني، استعادة الحسابات، التحقيق الرقمي، والاستشارات الأمنية. خبرة معتمدة من أكاديمية 8200، دكتوراه فخرية في الأمن السيبراني.',
+    hero_cta1: '💬 ابدأ الآن', hero_cta2: '← استعرض الخدمات',
+    stat1: 'حالة محلولة', stat2: 'استجابة طوارئ', stat3: 'أكاديمي معتمد', stat4: 'لغات خدمة',
+    services_tag: '// خدماتنا', services_title: 'حلول <span>سيبرانية</span> متكاملة',
+    s1_title: 'مكافحة الابتزاز الإلكتروني', s1_desc: 'استجابة فورية لحالات الابتزاز والتشهير الرقمي. تتبع المبتز، جمع الأدلة، التعامل القانوني، وإيقاف التهديد نهائياً.',
+    s2_title: 'استعادة الحسابات المخترقة', s2_desc: 'استرجاع الوصول لجميع منصات التواصل الاجتماعي، البريد الإلكتروني، حسابات الألعاب والتطبيقات المختلفة.',
+    s3_title: 'التحقيق الرقمي', s3_desc: 'تحديد هوية المهاجمين، تتبع المصادر الرقمية، وجمع الأدلة الجنائية الرقمية المعتمدة قانونياً.',
+    s4_title: 'تأمين الخصوصية', s4_desc: 'إزالة المحتوى الضار من الإنترنت، حماية المعلومات الشخصية، وتعزيز أمنك الرقمي الشامل.',
+    s5_title: 'استشارات الأمن السيبراني', s5_desc: 'تقييم البنية الأمنية، خطط الحماية المخصصة للأفراد والشركات، وتدريب الفرق على الوعي الأمني.',
+    s6_title: 'استجابة الطوارئ', s6_desc: 'فريق متاح على مدار الساعة للحالات الحرجة. استجابة فورية خلال دقائق من الاتصال الأول.',
+    platforms_label: '// المنصات التي نغطيها',
+    about_title: 'خبرة <span>حقيقية</span> في ميدان القتال الرقمي',
+    about_p1: 'مكتب DarkAG مبني على خبرة ميدانية حقيقية في أعمق تخصصات الأمن السيبراني. نؤمن أن كل ضحية تستحق استجابة سريعة، فعّالة، وسرية تامة.',
+    about_p2: 'بخلفية من أكاديمية 8200 ودكتوراه فخرية في الأمن السيبراني، نجمع بين المعرفة التقنية العميقة والفهم الإنساني لحساسية حالات الابتزاز والانتهاك الرقمي.',
+    emergency_title: '🚨 حالة طوارئ؟ اتصل الآن', emergency_sub: 'نرد فوراً على الحالات الحرجة — ابتزاز، اختراق، تهديد',
+    chat_title: 'مساعد <span>ذكاء اصطناعي</span> فوري', chat_status: '● متصل — يرد فوراً',
+    q1: 'تعرضت للابتزاز', q2: 'حسابي مخترق', q3: 'تسريب صور خاصة', q4: 'فقدت الوصول لحسابي',
+    chat_placeholder: 'اكتب رسالتك هنا...',
+    contact_tag: '// تواصل معنا', contact_title: 'ابدأ <span>الآن</span>', contact_h2: 'هنا لمساعدتك',
+    contact_p: 'لا تتردد في التواصل معنا مهما كانت حالتك. كل المعلومات تبقى سرية تماماً. نحن هنا لنساعدك.',
+    form_name: '// الاسم', form_name_ph: 'اسمك (سري)',
+    form_contact: '// طريقة التواصل', form_contact_ph: 'واتساب / إيميل / هاتف',
+    form_type: '// نوع الحالة', form_msg: '// تفاصيل الحالة', form_msg_ph: 'اشرح وضعك بشكل مختصر...',
+    opt1: 'ابتزاز إلكتروني', opt2: 'اختراق حساب', opt3: 'تسريب معلومات', opt4: 'استعادة حساب', opt5: 'استشارة أمنية', opt6: 'أخرى',
+    form_submit: 'إرسال الطلب ←',
+    footer_tag: 'نحميك في الظلام // We Guard in the Dark // אנחנו שומרים בחשכה',
+    float_emergency: 'طوارئ',
+    welcome_msg: 'مرحباً! أنا مساعد DarkAG الذكي. كيف يمكنني مساعدتك اليوم؟ يمكنك سؤالي عن الابتزاز، الاختراق، استعادة الحسابات، أو أي مشكلة أمنية.',
+    term_texts: ['analyzing threats...', 'securing your data...', 'protecting your privacy...']
+  },
+  he: {
+    nav_services: 'שירותים', nav_about: 'אודות', nav_chat: 'AI Chat', nav_contact: 'צור קשר', nav_emergency: '🚨 חירום',
+    hero_badge: 'זמינים 24/7 — תגובה מיידית',
+    hero_tagline: 'אנחנו שומרים בחשכה',
+    hero_sub: 'משרד המתמחה במאבק בסחיטה אלקטרונית, שחזור חשבונות, חקירה דיגיטלית, וייעוץ אבטחת סייבר. הסמכה מאקדמיית 8200, דוקטורט כבוד באבטחת מידע.',
+    hero_cta1: '💬 התחל עכשיו', hero_cta2: 'צפה בשירותים →',
+    stat1: 'מקרים נפתרו', stat2: 'תגובת חירום', stat3: 'מוסמך 8200', stat4: 'שפות שירות',
+    services_tag: '// השירותים שלנו', services_title: 'פתרונות <span>סייבר</span> מקיפים',
+    s1_title: 'מאבק בסחיטה אלקטרונית', s1_desc: 'תגובה מיידית למקרי סחיטה והשמצה דיגיטלית. מעקב אחר הסחטן, איסוף ראיות, ועצירת האיום לצמיתות.',
+    s2_title: 'שחזור חשבונות פרוצים', s2_desc: 'שחזור גישה לכל פלטפורמות המדיה החברתית, דואר אלקטרוני, חשבונות משחקים ואפליקציות.',
+    s3_title: 'חקירה דיגיטלית', s3_desc: 'זיהוי התוקפים, מעקב אחר מקורות דיגיטליים, ואיסוף ראיות פורנזיות דיגיטליות המוכרות משפטית.',
+    s4_title: 'הגנת פרטיות', s4_desc: 'הסרת תוכן מזיק מהאינטרנט, הגנה על מידע אישי, וחיזוק האבטחה הדיגיטלית הכוללת שלך.',
+    s5_title: 'ייעוץ אבטחת סייבר', s5_desc: 'הערכת תשתית האבטחה, תוכניות הגנה מותאמות אישית, והכשרת צוותים למודעות אבטחה.',
+    s6_title: 'תגובת חירום', s6_desc: 'צוות זמין 24/7 למקרים קריטיים. תגובה מיידית תוך דקות מהפנייה הראשונה.',
+    platforms_label: '// פלטפורמות שאנחנו מכסים',
+    about_title: 'ניסיון <span>אמיתי</span> בשדה הקרב הדיגיטלי',
+    about_p1: 'משרד DarkAG בנוי על ניסיון שטח אמיתי בתחומי אבטחת הסייבר המתמחים ביותר. אנחנו מאמינים שכל נפגע ראוי לתגובה מהירה, אפקטיבית, ובסודיות מלאה.',
+    about_p2: 'עם רקע מאקדמיית 8200 ודוקטורט כבוד באבטחת סייבר, אנחנו משלבים ידע טכני עמוק עם הבנה אנושית לרגישות מקרי הסחיטה והפגיעה הדיגיטלית.',
+    emergency_title: '🚨 מצב חירום? התקשר עכשיו', emergency_sub: 'אנחנו עונים מיד למקרים קריטיים — סחיטה, פריצה, איום',
+    chat_title: 'עוזר <span>בינה מלאכותית</span> מיידי', chat_status: '● מחובר — עונה מיד',
+    q1: 'נפלתי קורבן לסחיטה', q2: 'החשבון שלי נפרץ', q3: 'דלפו תמונות פרטיות', q4: 'איבדתי גישה לחשבון',
+    chat_placeholder: 'כתוב את הודעתך כאן...',
+    contact_tag: '// צרו קשר', contact_title: 'התחל <span>עכשיו</span>', contact_h2: 'כאן לעזור לך',
+    contact_p: 'אל תהסס לפנות אלינו בכל מצב. כל המידע נשאר חסוי לחלוטין. אנחנו כאן לעזור לך.',
+    form_name: '// שם', form_name_ph: 'שמך (חסוי)',
+    form_contact: '// יצירת קשר', form_contact_ph: 'WhatsApp / מייל / טלפון',
+    form_type: '// סוג המקרה', form_msg: '// פרטי המקרה', form_msg_ph: 'תאר את מצבך בקצרה...',
+    opt1: 'סחיטה אלקטרונית', opt2: 'פריצת חשבון', opt3: 'דליפת מידע', opt4: 'שחזור חשבון', opt5: 'ייעוץ אבטחה', opt6: 'אחר',
+    form_submit: 'שלח בקשה →',
+    footer_tag: 'נחניך في הצ\'ולמה // We Guard in the Dark // אנחנו שומרים בחשכה',
+    float_emergency: 'חירום',
+    welcome_msg: 'שלום! אני העוזר החכם של DarkAG. איך אוכל לעזור לך היום? תוכל לשאול אותי על סחיטה, פריצה, שחזור חשבונות, או כל בעיית אבטחה.',
+    term_texts: ['מנתח איומים...', 'מאבטח את המידע שלך...', 'מגן על הפרטיות שלך...']
+  },
+  en: {
+    nav_services: 'Services', nav_about: 'About', nav_chat: 'AI Chat', nav_contact: 'Contact', nav_emergency: '🚨 Emergency',
+    hero_badge: 'Available 24/7 — Immediate Response',
+    hero_tagline: 'We Guard in the Dark',
+    hero_sub: 'Specialized office in anti-blackmail/extortion, account recovery, digital investigation, and cybersecurity consulting. Certified by 8200 Academy, Honorary PhD in Cybersecurity.',
+    hero_cta1: '💬 Start Now', hero_cta2: 'View Services →',
+    stat1: 'Cases Solved', stat2: 'Emergency Response', stat3: '8200 Certified', stat4: 'Languages',
+    services_tag: '// Our Services', services_title: 'Complete <span>Cyber</span> Solutions',
+    s1_title: 'Anti-Blackmail & Extortion', s1_desc: 'Immediate response to blackmail and digital defamation. Track the blackmailer, gather evidence, legal handling, and permanently stop the threat.',
+    s2_title: 'Hacked Account Recovery', s2_desc: 'Regain access to all social media platforms, email, gaming accounts, and various applications.',
+    s3_title: 'Digital Investigation', s3_desc: 'Identify attackers, trace digital sources, and gather legally-admissible digital forensic evidence.',
+    s4_title: 'Privacy Protection', s4_desc: 'Remove harmful content from the internet, protect personal information, and strengthen your overall digital security.',
+    s5_title: 'Cybersecurity Consulting', s5_desc: 'Security architecture assessment, custom protection plans for individuals and businesses, and team security awareness training.',
+    s6_title: 'Emergency Response', s6_desc: 'Team available around the clock for critical cases. Immediate response within minutes of first contact.',
+    platforms_label: '// PLATFORMS WE COVER',
+    about_title: 'Real <span>Experience</span> on the Digital Battlefield',
+    about_p1: 'DarkAG is built on genuine field experience in the most specialized areas of cybersecurity. We believe every victim deserves a fast, effective, and fully confidential response.',
+    about_p2: 'With a background from 8200 Academy and an honorary doctorate in cybersecurity, we combine deep technical knowledge with human understanding of the sensitivity of blackmail and digital violation cases.',
+    emergency_title: '🚨 Emergency? Call Now', emergency_sub: 'We respond immediately to critical cases — blackmail, breach, threats',
+    chat_title: 'Instant <span>AI Assistant</span>', chat_status: '● Online — Responds Instantly',
+    q1: 'I\'m being blackmailed', q2: 'My account was hacked', q3: 'Private photos leaked', q4: 'Lost account access',
+    chat_placeholder: 'Type your message here...',
+    contact_tag: '// Contact Us', contact_title: 'Start <span>Now</span>', contact_h2: 'Here to Help You',
+    contact_p: 'Don\'t hesitate to reach out regardless of your situation. All information remains completely confidential. We are here to help.',
+    form_name: '// Name', form_name_ph: 'Your name (confidential)',
+    form_contact: '// Contact Method', form_contact_ph: 'WhatsApp / Email / Phone',
+    form_type: '// Case Type', form_msg: '// Case Details', form_msg_ph: 'Describe your situation briefly...',
+    opt1: 'Digital Blackmail', opt2: 'Account Breach', opt3: 'Data Leak', opt4: 'Account Recovery', opt5: 'Security Consulting', opt6: 'Other',
+    form_submit: 'Send Request →',
+    footer_tag: 'نحميك في الظلام // We Guard in the Dark // אנחנו שומרים בחשכה',
+    float_emergency: 'Emergency',
+    welcome_msg: 'Hello! I\'m the DarkAG AI assistant. How can I help you today? You can ask me about blackmail, hacking, account recovery, or any security issue.',
+    term_texts: ['analyzing threats...', 'securing your data...', 'protecting your privacy...']
+  }
+};
+
+let currentLang = 'ar';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+
+  const dir = lang === 'ar' ? 'rtl' : 'ltr';
+  document.body.dir = dir;
+  document.documentElement.lang = lang;
+
+  // Update text content
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (i18n[lang][key] !== undefined) {
+      el.innerHTML = i18n[lang][key];
+    }
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if (i18n[lang][key]) el.placeholder = i18n[lang][key];
+  });
+
+  // Update chat input dir
+  document.getElementById('chatInput').dir = dir;
+  document.getElementById('welcomeMsg').textContent = i18n[lang].welcome_msg;
+  document.getElementById('chatInput').placeholder = i18n[lang].chat_placeholder;
+}
+
+// ========== TERMINAL ANIMATION ==========
+const termCommands = [
+  'scanning for threats...',
+  'protecting your account...',
+  'tracing the attacker...',
+  'securing your privacy...',
+  'analyzing the breach...'
+];
+let termIdx = 0, charIdx = 0, termEl = document.getElementById('termText');
+function typeTerminal() {
+  const cmd = termCommands[termIdx];
+  if (charIdx < cmd.length) {
+    termEl.textContent = cmd.substring(0, ++charIdx);
+    setTimeout(typeTerminal, 60);
+  } else {
+    setTimeout(() => {
+      charIdx = 0; termIdx = (termIdx + 1) % termCommands.length;
+      termEl.textContent = '';
+      setTimeout(typeTerminal, 300);
+    }, 2200);
+  }
+}
+typeTerminal();
+
+// ========== AI CHAT ==========
+const systemPrompt = `You are DarkAG's expert cybersecurity AI assistant. DarkAG is a professional cybersecurity office specializing in anti-blackmail/extortion cases, account recovery, digital forensics, and cybersecurity consulting. The founder has credentials from 8200 Academy and an honorary PhD in cybersecurity.
+
+Your role is to:
+1. Detect the user's language automatically (Arabic, Hebrew, or English) and respond in THAT SAME language
+2. Provide immediate, empathetic support for victims of blackmail, hacking, account issues, and privacy violations
+3. Gather key information about their situation to assess urgency
+4. Give practical first-response advice (what NOT to do, what to preserve as evidence)
+5. Direct urgent cases to call: +972586682260 or email: darkag@darkag.computer
+6. Be professional yet warm — these are often distressed people in crisis
+7. Cover all major social platforms: Facebook, Instagram, WhatsApp, TikTok, Snapchat, YouTube, Telegram, Twitter/X, PUBG, Gmail, etc.
+
+NEVER provide hacking instructions or help anyone harm others. ALWAYS maintain confidentiality and be supportive.
+
+Keep responses concise (3-5 sentences max) unless the situation requires more detail. Always end with an actionable next step or question to better understand their case.`;
+
+// ✅ Secure: calls Cloudflare Worker (API key hidden server-side)
+const WORKER_URL = 'https://darkag-ai.YOUR-SUBDOMAIN.workers.dev';
+
+async function callAI(userMessage) {
+  const response = await fetch(WORKER_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      messages: chatHistory.map(m => ({ role: m.role, content: m.content }))
+    })
+  });
+  const data = await response.json();
+  return data.content?.[0]?.text || 'حدث خطأ، يرجى المحاولة مرة أخرى.';
+}
+
+let chatHistory = [];
+
+async function sendMessage() {
+  const input = document.getElementById('chatInput');
+  const msg = input.value.trim();
+  if (!msg) return;
+
+  input.value = '';
+  input.style.height = 'auto';
+
+  // Add user message
+  addMsg(msg, 'user');
+  chatHistory.push({ role: 'user', content: msg });
+
+  // Show typing
+  const typingId = showTyping();
+
+  try {
+    const reply = await callAI(msg);
+    removeTyping(typingId);
+    addMsg(reply, 'bot');
+    chatHistory.push({ role: 'assistant', content: reply });
+  } catch(e) {
+    removeTyping(typingId);
+    addMsg('عذراً، حدث خطأ في الاتصال. يرجى التواصل مباشرة على: +972586682260', 'bot');
+  }
+}
+
+function addMsg(text, type) {
+  const msgs = document.getElementById('chatMessages');
+  const div = document.createElement('div');
+  div.className = `msg ${type}`;
+  const now = new Date().toLocaleTimeString('ar', { hour: '2-digit', minute: '2-digit' });
+  div.innerHTML = `
+    <div class="msg-av">${type === 'bot' ? 'AG' : '👤'}</div>
+    <div>
+      <div class="msg-bubble">${text}</div>
+      <div class="msg-time">${now}</div>
+    </div>`;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function showTyping() {
+  const msgs = document.getElementById('chatMessages');
+  const div = document.createElement('div');
+  const id = 'typing_' + Date.now();
+  div.id = id;
+  div.className = 'msg bot';
+  div.innerHTML = `<div class="msg-av">AG</div><div><div class="msg-bubble"><div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div></div></div>`;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+  return id;
+}
+
+function removeTyping(id) {
+  const el = document.getElementById(id);
+  if (el) el.remove();
+}
+
+function quickSend(btn) {
+  document.getElementById('chatInput').value = btn.textContent;
+  sendMessage();
+}
+
+function handleKey(e) {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+}
+
+function autoResize(el) {
+  el.style.height = 'auto';
+  el.style.height = Math.min(el.scrollHeight, 120) + 'px';
+}
+
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('[type=submit]');
+  btn.textContent = currentLan
