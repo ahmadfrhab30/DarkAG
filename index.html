@@ -1263,7 +1263,7 @@ NEVER provide hacking instructions or help anyone harm others. ALWAYS maintain c
 Keep responses concise (3-5 sentences max) unless the situation requires more detail. Always end with an actionable next step or question to better understand their case.`;
 
 // ✅ Secure: calls Cloudflare Worker (API key hidden server-side)
-const WORKER_URL = 'https://darkag-ai.YOUR-SUBDOMAIN.workers.dev';
+const WORKER_URL = 'https://rough-pine-d44c.darkag.workers.dev';
 
 async function callAI(userMessage) {
   const response = await fetch(WORKER_URL, {
